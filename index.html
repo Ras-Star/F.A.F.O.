@@ -21,7 +21,7 @@
       <div class="container position-relative">
         <header class="topbar d-flex flex-column flex-sm-row justify-content-between align-items-sm-center gap-3 mb-4">
           <div>
-            <p class="eyebrow mb-1">Offline Bootstrap Adventure</p>
+            <p class="eyebrow mb-1">Mission Control</p>
             <h1 class="h4 mb-0">Signal Academy</h1>
           </div>
           <div class="d-flex flex-wrap gap-2">
@@ -29,6 +29,7 @@
               class="btn btn-outline-light btn-sm"
               id="guideToggleButton"
               type="button"
+              data-interact-hint="Open guide"
               data-bs-toggle="collapse"
               data-bs-target="#howToPlay"
               aria-expanded="false"
@@ -40,6 +41,7 @@
               class="btn btn-light btn-sm"
               id="logButton"
               type="button"
+              data-interact-hint="Open log"
               data-bs-toggle="offcanvas"
               data-bs-target="#logCanvas"
               aria-controls="logCanvas"
@@ -69,12 +71,13 @@
                 </div>
 
                 <div class="d-flex flex-wrap gap-3">
-                  <button class="btn btn-dark btn-lg px-4" id="startButton" type="button">
+                  <button class="btn btn-dark btn-lg px-4" id="startButton" type="button" data-interact-hint="Start now">
                     Start Mission
                   </button>
                   <button
                     class="btn btn-outline-light btn-lg px-4"
                     type="button"
+                    data-interact-hint="Read guide"
                     data-bs-toggle="collapse"
                     data-bs-target="#howToPlay"
                     aria-expanded="false"
@@ -277,13 +280,14 @@
                       <button
                         class="btn btn-outline-light btn-sm"
                         type="button"
+                        data-interact-hint="Open log"
                         data-bs-toggle="offcanvas"
                         data-bs-target="#logCanvas"
                         aria-controls="logCanvas"
                       >
                         Open Log
                       </button>
-                      <button class="btn btn-outline-warning btn-sm" id="restartButton" type="button">
+                      <button class="btn btn-outline-warning btn-sm" id="restartButton" type="button" data-interact-hint="Restart run">
                         Restart Mission
                       </button>
                     </div>
@@ -340,6 +344,7 @@
                     <button
                       class="accordion-button"
                       type="button"
+                      data-interact-hint="Open panel"
                       data-bs-toggle="collapse"
                       data-bs-target="#collapseInventory"
                       aria-expanded="true"
@@ -365,6 +370,7 @@
                     <button
                       class="accordion-button collapsed"
                       type="button"
+                      data-interact-hint="Open panel"
                       data-bs-toggle="collapse"
                       data-bs-target="#collapseStats"
                       aria-expanded="false"
@@ -390,6 +396,7 @@
                     <button
                       class="accordion-button collapsed"
                       type="button"
+                      data-interact-hint="Open panel"
                       data-bs-toggle="collapse"
                       data-bs-target="#collapseTips"
                       aria-expanded="false"
@@ -453,6 +460,14 @@
       </div>
     </div>
 
+    <footer class="app-footer">
+      <div class="container">
+        <div class="footer-shell">
+          <span class="footer-credit">🎮 Made by Gabriel 🎮</span>
+        </div>
+      </div>
+    </footer>
+
     <div class="toast-container position-fixed bottom-0 end-0 p-3">
       <div
         id="feedbackToast"
@@ -498,10 +513,10 @@
             </div>
           </div>
           <div class="modal-footer border-0">
-            <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">
+            <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal" data-interact-hint="Close result">
               Close
             </button>
-            <button type="button" class="btn btn-dark" id="modalRestartButton">
+            <button type="button" class="btn btn-dark" id="modalRestartButton" data-interact-hint="Play again">
               Restart Mission
             </button>
           </div>

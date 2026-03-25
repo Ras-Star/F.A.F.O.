@@ -1107,8 +1107,12 @@ function renderChoices(scene) {
     const button = document.createElement("button");
     button.type = "button";
     button.className = "btn choice-button";
+    button.setAttribute("data-interact-hint", "Choose path");
     button.innerHTML = `
-      <span class="choice-title">${choice.label}</span>
+      <span class="choice-top">
+        <span class="choice-title">${choice.label}</span>
+        <span class="choice-cta">Tap to choose</span>
+      </span>
       <span class="choice-summary">${choice.summary}</span>
     `;
     button.addEventListener("click", () => {
