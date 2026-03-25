@@ -268,12 +268,24 @@ button,
 
 .scene-subtitle {
   max-width: 38rem;
+  line-height: 1.6;
 }
 
 .signal-window {
   border-radius: 1.25rem;
   position: relative;
   overflow: hidden;
+}
+
+.signal-window .small {
+  line-height: 1.45;
+}
+
+#sceneLabel,
+#endingLabel {
+  display: inline-block;
+  max-width: 48%;
+  overflow-wrap: anywhere;
 }
 
 .signal-window::before {
@@ -321,6 +333,8 @@ button,
 
 .telemetry-pill strong {
   font-size: 0.9rem;
+  line-height: 1.35;
+  overflow-wrap: anywhere;
 }
 
 .status-badge {
@@ -817,24 +831,7 @@ button,
   }
 }
 
-@media (max-width: 575.98px) {
-  .display-4 {
-    font-size: 2.4rem;
-  }
-
-  .display-6 {
-    font-size: 2rem;
-  }
-
-  #choiceButtons .choice-button {
-    padding: 0.95rem 1rem;
-  }
-
-  .choice-top {
-    flex-direction: column;
-    align-items: flex-start;
-  }
-
+@media (max-width: 1199.98px) {
   .btn[data-interact-hint]:not(.btn-close):not(.choice-button) {
     padding-right: 1rem;
     padding-bottom: 2rem;
@@ -859,5 +856,60 @@ button,
     right: 2.8rem;
     transform: none;
     animation: none;
+  }
+
+  .signal-window {
+    padding: 1rem !important;
+  }
+
+  .signal-window .d-flex {
+    flex-wrap: wrap;
+    gap: 0.5rem;
+  }
+
+  #sceneLabel,
+  #endingLabel {
+    max-width: 100%;
+  }
+}
+
+@media (max-width: 575.98px) {
+  .display-4 {
+    font-size: 2.4rem;
+  }
+
+  .display-6 {
+    font-size: 2rem;
+  }
+
+  #choiceButtons .choice-button {
+    padding: 0.95rem 1rem;
+  }
+
+  .choice-top {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .topbar {
+    padding: 0.95rem 1rem 1.15rem;
+  }
+
+  .signal-window,
+  .mission-card,
+  .story-copy,
+  .mini-panel,
+  .ending-highlights,
+  .hero-chip {
+    padding: 0.95rem 1rem;
+  }
+
+  .telemetry-pill {
+    padding: 0.8rem 0.85rem;
+  }
+
+  .footer-credit {
+    width: 100%;
+    text-align: center;
   }
 }
