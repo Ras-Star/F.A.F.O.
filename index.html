@@ -9,6 +9,10 @@
   </head>
   <body>
     <div class="app-backdrop" aria-hidden="true">
+      <div class="starfield stars-back"></div>
+      <div class="starfield stars-front"></div>
+      <div class="scan-grid"></div>
+      <div class="hud-vignette"></div>
       <div class="orb orb-a"></div>
       <div class="orb orb-b"></div>
     </div>
@@ -78,6 +82,30 @@
                   >
                     How To Play
                   </button>
+                </div>
+
+                <div class="row g-3 hero-status mt-2">
+                  <div class="col-sm-4">
+                    <div class="hero-chip">
+                      <span class="mini-label">Signal Risk</span>
+                      <span class="mini-value">Critical</span>
+                      <span class="hero-chip-bar hero-chip-red"></span>
+                    </div>
+                  </div>
+                  <div class="col-sm-4">
+                    <div class="hero-chip">
+                      <span class="mini-label">Play Style</span>
+                      <span class="mini-value">3 Core Routes</span>
+                      <span class="hero-chip-bar hero-chip-blue"></span>
+                    </div>
+                  </div>
+                  <div class="col-sm-4">
+                    <div class="hero-chip">
+                      <span class="mini-label">Mission Help</span>
+                      <span class="mini-value">Live Hints</span>
+                      <span class="hero-chip-bar hero-chip-gold"></span>
+                    </div>
+                  </div>
                 </div>
               </div>
 
@@ -157,7 +185,7 @@
         <section class="d-none" id="gamePanel">
           <div class="row g-4 align-items-start">
             <div class="col-xl-8">
-              <article class="card border-0 shadow-lg story-panel overflow-hidden">
+              <article class="card border-0 shadow-lg story-panel overflow-hidden" id="storyPanel">
                 <div class="card-body p-4 p-lg-5">
                   <div class="row g-3 align-items-start mb-4">
                     <div class="col-lg-8">
@@ -181,6 +209,26 @@
                         </div>
                         <div class="progress" role="progressbar" aria-label="Mission progress">
                           <div class="progress-bar" id="missionProgressBar"></div>
+                        </div>
+                        <div class="row g-2 telemetry-strip mt-3">
+                          <div class="col-4">
+                            <div class="telemetry-pill">
+                              <span class="telemetry-label">Signal</span>
+                              <strong id="signalState">Unstable</strong>
+                            </div>
+                          </div>
+                          <div class="col-4">
+                            <div class="telemetry-pill">
+                              <span class="telemetry-label">Risk</span>
+                              <strong id="riskState">High</strong>
+                            </div>
+                          </div>
+                          <div class="col-4">
+                            <div class="telemetry-pill">
+                              <span class="telemetry-label">Support</span>
+                              <strong id="supportState">Solo</strong>
+                            </div>
+                          </div>
                         </div>
                       </div>
                     </div>

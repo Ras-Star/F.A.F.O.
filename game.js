@@ -918,6 +918,7 @@ const gamePanel = document.getElementById("gamePanel");
 const startButton = document.getElementById("startButton");
 const guideToggleButton = document.getElementById("guideToggleButton");
 const logButton = document.getElementById("logButton");
+const storyPanel = document.getElementById("storyPanel");
 const sceneTitle = document.getElementById("sceneTitle");
 const sceneSubtitle = document.getElementById("sceneSubtitle");
 const storyText = document.getElementById("storyText");
@@ -939,6 +940,9 @@ const phaseBadge = document.getElementById("phaseBadge");
 const objectiveMini = document.getElementById("objectiveMini");
 const crewPathLabel = document.getElementById("crewPathLabel");
 const hintMini = document.getElementById("hintMini");
+const signalState = document.getElementById("signalState");
+const riskState = document.getElementById("riskState");
+const supportState = document.getElementById("supportState");
 const endingSummaryPanel = document.getElementById("endingSummaryPanel");
 const endingSummaryTitle = document.getElementById("endingSummaryTitle");
 const endingSummaryText = document.getElementById("endingSummaryText");
@@ -983,6 +987,70 @@ function phaseLabel(phase) {
   }
 
   return "Welcome";
+}
+
+function describeSignalState() {
+  if (state.phase === "ending") {
+    return "Broadcast";
+  }
+
+  if (state.flags.sponsorProof || state.flags.truthDecoded) {
+    return "Locked";
+  }
+
+  if (state.flags.hasTrace) {
+    return "Tracing";
+  }
+
+  if (state.flags.powerRerouted) {
+    return "Stable";
+  }
+
+  return "Unstable";
+}
+
+function describeRiskState() {
+  if (state.phase === "ending") {
+    return "Closed";
+  }
+
+  const reserve = state.stats.focus + state.stats.charge;
+
+  if (reserve >= 16) {
+    return "Low";
+  }
+
+  if (reserve >= 12) {
+    return "Medium";
+  }
+
+  return "High";
+}
+
+function describeSupportState() {
+  if (state.phase === "ending" && state.stats.crewTrust >= 7) {
+    return "United";
+  }
+
+  if (state.stats.crewTrust >= 7) {
+    return "Strong";
+  }
+
+  if (state.stats.crewTrust >= 5) {
+    return "Crewed";
+  }
+
+  return "Solo";
+}
+
+function flashScenePanel() {
+  if (!storyPanel) {
+    return;
+  }
+
+  storyPanel.classList.remove("scene-flash");
+  void storyPanel.offsetWidth;
+  storyPanel.classList.add("scene-flash");
 }
 
 function showToast(message) {
@@ -1055,6 +1123,7 @@ function renderChoices(scene) {
         state.phase = "playing";
       }
       render();
+      flashScenePanel();
       showToast(state.impactNote);
       if (nextScene.ending && endingModal) {
         endingModal.show();
@@ -1168,6 +1237,9 @@ function renderScene(scene) {
   objectiveMini.textContent = state.currentObjective;
   crewPathLabel.textContent = state.pathLabel;
   hintMini.textContent = state.currentHint;
+  signalState.textContent = describeSignalState();
+  riskState.textContent = describeRiskState();
+  supportState.textContent = describeSupportState();
   missionProgressBar.style.width = `${state.progress}%`;
   missionProgressBar.setAttribute("aria-valuenow", String(state.progress));
   renderChoices(scene);
@@ -1219,6 +1291,7 @@ function startMission() {
   state.impactNote = "Mission live. Balance the crew, the clues, and the clock.";
   setScene("dock");
   render();
+  flashScenePanel();
   if (howToPlay && typeof bootstrap !== "undefined") {
     bootstrap.Collapse.getOrCreateInstance(howToPlay, { toggle: false }).hide();
   }
