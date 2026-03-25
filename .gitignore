@@ -1,0 +1,4 @@
+node_modules/
+.npm-cache/
+Microsoft/
+npm-debug.log*

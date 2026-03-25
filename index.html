@@ -1,0 +1,467 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Signal Academy: Blackout Protocol</title>
+    <link rel="stylesheet" href="vendor/bootstrap/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div class="app-backdrop" aria-hidden="true">
+      <div class="orb orb-a"></div>
+      <div class="orb orb-b"></div>
+    </div>
+
+    <main class="app-shell py-4 py-xl-5">
+      <div class="container position-relative">
+        <header class="topbar d-flex flex-column flex-sm-row justify-content-between align-items-sm-center gap-3 mb-4">
+          <div>
+            <p class="eyebrow mb-1">Offline Bootstrap Adventure</p>
+            <h1 class="h4 mb-0">Signal Academy</h1>
+          </div>
+          <div class="d-flex flex-wrap gap-2">
+            <button
+              class="btn btn-outline-light btn-sm"
+              id="guideToggleButton"
+              type="button"
+              data-bs-toggle="collapse"
+              data-bs-target="#howToPlay"
+              aria-expanded="false"
+              aria-controls="howToPlay"
+            >
+              Mission Guide
+            </button>
+            <button
+              class="btn btn-light btn-sm"
+              id="logButton"
+              type="button"
+              data-bs-toggle="offcanvas"
+              data-bs-target="#logCanvas"
+              aria-controls="logCanvas"
+              disabled
+            >
+              Mission Log
+            </button>
+          </div>
+        </header>
+
+        <section class="card border-0 shadow-lg welcome-panel mb-4" id="welcomePanel">
+          <div class="card-body p-4 p-lg-5">
+            <div class="row g-4 align-items-center">
+              <div class="col-lg-7">
+                <p class="eyebrow mb-2">Interactive Story Game</p>
+                <h2 class="display-4 mb-3">Signal Academy: Blackout Protocol</h2>
+                <p class="lead text-secondary mb-4">
+                  The academy showcase is meant to be your crew's big night until
+                  the lights crash, the station feed gets hijacked, and everyone
+                  starts looking at you for the next move.
+                </p>
+
+                <div class="d-flex flex-wrap gap-2 mb-4">
+                  <span class="badge rounded-pill text-bg-warning text-dark">Older Teen Sci-Fi</span>
+                  <span class="badge rounded-pill text-bg-info text-dark">Branching Choices</span>
+                  <span class="badge rounded-pill text-bg-light">Bootstrap Powered</span>
+                </div>
+
+                <div class="d-flex flex-wrap gap-3">
+                  <button class="btn btn-dark btn-lg px-4" id="startButton" type="button">
+                    Start Mission
+                  </button>
+                  <button
+                    class="btn btn-outline-light btn-lg px-4"
+                    type="button"
+                    data-bs-toggle="collapse"
+                    data-bs-target="#howToPlay"
+                    aria-expanded="false"
+                    aria-controls="howToPlay"
+                  >
+                    How To Play
+                  </button>
+                </div>
+              </div>
+
+              <div class="col-lg-5">
+                <div class="brief-panel rounded-4 p-4 h-100">
+                  <div class="signal-emblem mb-3" aria-hidden="true">
+                    <svg viewBox="0 0 320 180" class="w-100" role="presentation">
+                      <defs>
+                        <linearGradient id="heroGlow" x1="0%" y1="0%" x2="100%" y2="100%">
+                          <stop offset="0%" stop-color="#58e1ff" />
+                          <stop offset="100%" stop-color="#ff8e72" />
+                        </linearGradient>
+                      </defs>
+                      <rect x="18" y="28" width="284" height="124" rx="22" fill="none" stroke="rgba(255,255,255,0.2)" stroke-width="4" />
+                      <path d="M54 116C87 81 112 64 150 64C191 64 216 88 264 52" fill="none" stroke="url(#heroGlow)" stroke-width="10" stroke-linecap="round" />
+                      <circle cx="78" cy="115" r="10" fill="#58e1ff" />
+                      <circle cx="150" cy="64" r="12" fill="#ffffff" />
+                      <circle cx="264" cy="52" r="11" fill="#ff8e72" />
+                      <path d="M82 42H128" stroke="#58e1ff" stroke-width="4" stroke-linecap="round" />
+                      <path d="M194 132H248" stroke="#ffd369" stroke-width="4" stroke-linecap="round" />
+                    </svg>
+                  </div>
+                  <p class="eyebrow mb-2">Mission Brief</p>
+                  <h3 class="h5 mb-3">Tonight's objective</h3>
+                  <ul class="list-group list-group-flush brief-list">
+                    <li class="list-group-item">Stabilize the academy grid before the blackout hits the tower.</li>
+                    <li class="list-group-item">Keep your crew calm enough to move together.</li>
+                    <li class="list-group-item">Decide whether to save the night quietly or expose what caused it.</li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+
+            <div class="collapse mt-4" id="howToPlay">
+              <div class="row g-3">
+                <div class="col-md-4">
+                  <div class="card guide-card h-100 border-0">
+                    <div class="card-body p-4">
+                      <p class="eyebrow mb-2">1. Read The Room</p>
+                      <h3 class="h5">Follow the objective</h3>
+                      <p class="text-secondary mb-0">
+                        Every scene updates your current goal, progress, and the
+                        safest clue to chase next.
+                      </p>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-md-4">
+                  <div class="card guide-card h-100 border-0">
+                    <div class="card-body p-4">
+                      <p class="eyebrow mb-2">2. Balance Your Stats</p>
+                      <h3 class="h5">Focus, trust, and charge matter</h3>
+                      <p class="text-secondary mb-0">
+                        Sharp decisions unlock proof, crew trust opens team-up
+                        endings, and charge keeps key systems online.
+                      </p>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-md-4">
+                  <div class="card guide-card h-100 border-0">
+                    <div class="card-body p-4">
+                      <p class="eyebrow mb-2">3. Own The Ending</p>
+                      <h3 class="h5">Your route shapes the finale</h3>
+                      <p class="text-secondary mb-0">
+                        You can rescue the academy, broadcast the truth, or get
+                        everyone home the quiet way.
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section class="d-none" id="gamePanel">
+          <div class="row g-4 align-items-start">
+            <div class="col-xl-8">
+              <article class="card border-0 shadow-lg story-panel overflow-hidden">
+                <div class="card-body p-4 p-lg-5">
+                  <div class="row g-3 align-items-start mb-4">
+                    <div class="col-lg-8">
+                      <div class="d-flex flex-wrap gap-2 mb-3">
+                        <span class="badge text-bg-dark rounded-pill" id="chapterBadge">Act 1</span>
+                        <span class="badge status-badge rounded-pill" id="statusBadge">Live Mission</span>
+                      </div>
+                      <p class="eyebrow mb-2">Current Scene</p>
+                      <h2 class="display-6 mb-2" id="sceneTitle">Dock Ring 3</h2>
+                      <p class="scene-subtitle text-secondary mb-0" id="sceneSubtitle">
+                        The blackout hits during the academy showcase.
+                      </p>
+                    </div>
+
+                    <div class="col-lg-4">
+                      <div class="signal-window rounded-4 p-3 h-100">
+                        <div class="small text-uppercase opacity-75 mb-2">Mission Progress</div>
+                        <div class="d-flex justify-content-between small mb-2">
+                          <span id="sceneLabel">Dock Ring 3</span>
+                          <span id="endingLabel">Undecided</span>
+                        </div>
+                        <div class="progress" role="progressbar" aria-label="Mission progress">
+                          <div class="progress-bar" id="missionProgressBar"></div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="row g-3 mb-4">
+                    <div class="col-md-6">
+                      <div class="mission-card objective-card h-100">
+                        <p class="eyebrow mb-2">Current Objective</p>
+                        <h3 class="h6 mb-2">What matters now</h3>
+                        <p class="mb-0" id="objectiveText">Secure the station and find your crew.</p>
+                      </div>
+                    </div>
+                    <div class="col-md-6">
+                      <div class="mission-card hint-card h-100">
+                        <p class="eyebrow mb-2">Hint Feed</p>
+                        <h3 class="h6 mb-2">Best next clue</h3>
+                        <p class="mb-0" id="hintText">Hints update as you learn more about the blackout.</p>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="story-copy rounded-4 p-4 mb-4">
+                    <div class="story-signal mb-3" aria-hidden="true">
+                      <svg viewBox="0 0 320 72" class="w-100" role="presentation">
+                        <path d="M8 50H72L98 20L132 59L178 11L224 61L270 33H312" fill="none" stroke="#58e1ff" stroke-width="5" stroke-linecap="round" stroke-linejoin="round" />
+                        <circle cx="98" cy="20" r="6" fill="#ffd369" />
+                        <circle cx="178" cy="11" r="7" fill="#ffffff" />
+                        <circle cx="270" cy="33" r="6" fill="#ff8e72" />
+                      </svg>
+                    </div>
+                    <p class="fs-5 mb-0" id="storyText">
+                      The blackout hits in a sweep of sparks and cut music as the
+                      showcase station suddenly goes silent.
+                    </p>
+                  </div>
+
+                  <div class="d-flex flex-column flex-lg-row justify-content-between align-items-lg-center gap-3 mb-3">
+                    <div>
+                      <p class="eyebrow mb-1">Next Move</p>
+                      <p class="impact-note mb-0" id="impactNote">
+                        Pick a path that matches the kind of leader you want to be.
+                      </p>
+                    </div>
+                    <div class="d-flex flex-wrap gap-2">
+                      <button
+                        class="btn btn-outline-light btn-sm"
+                        type="button"
+                        data-bs-toggle="offcanvas"
+                        data-bs-target="#logCanvas"
+                        aria-controls="logCanvas"
+                      >
+                        Open Log
+                      </button>
+                      <button class="btn btn-outline-warning btn-sm" id="restartButton" type="button">
+                        Restart Mission
+                      </button>
+                    </div>
+                  </div>
+
+                  <div class="d-grid gap-3" id="choiceButtons" aria-label="Story choices"></div>
+                </div>
+              </article>
+
+              <section class="card border-0 shadow-sm summary-panel mt-4 d-none" id="endingSummaryPanel">
+                <div class="card-body p-4">
+                  <div class="d-flex justify-content-between align-items-center gap-3 mb-3">
+                    <div>
+                      <p class="eyebrow mb-1">Latest Outcome</p>
+                      <h3 class="h4 mb-0" id="endingSummaryTitle">United Signal</h3>
+                    </div>
+                    <span class="badge rounded-pill text-bg-success" id="endingSummaryBadge">Mission Complete</span>
+                  </div>
+                  <p class="mb-0 text-secondary" id="endingSummaryText"></p>
+                </div>
+              </section>
+            </div>
+
+            <div class="col-xl-4">
+              <div class="card border-0 shadow-sm sidebar-panel mb-4">
+                <div class="card-body p-4">
+                  <div class="d-flex justify-content-between align-items-start gap-3 mb-3">
+                    <div>
+                      <p class="eyebrow mb-1">Mission HUD</p>
+                      <h3 class="h5 mb-0">Cadet Status</h3>
+                    </div>
+                    <span class="badge rounded-pill text-bg-info text-dark" id="phaseBadge">Welcome</span>
+                  </div>
+                  <div class="row g-3">
+                    <div class="col-6">
+                      <div class="mini-panel h-100">
+                        <div class="mini-label">Objective</div>
+                        <div class="mini-value" id="objectiveMini">Start the mission</div>
+                      </div>
+                    </div>
+                    <div class="col-6">
+                      <div class="mini-panel h-100">
+                        <div class="mini-label">Crew Path</div>
+                        <div class="mini-value" id="crewPathLabel">Undecided</div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="accordion dashboard-accordion shadow-sm" id="dashboardAccordion">
+                <div class="accordion-item">
+                  <h2 class="accordion-header" id="headingInventory">
+                    <button
+                      class="accordion-button"
+                      type="button"
+                      data-bs-toggle="collapse"
+                      data-bs-target="#collapseInventory"
+                      aria-expanded="true"
+                      aria-controls="collapseInventory"
+                    >
+                      Inventory
+                    </button>
+                  </h2>
+                  <div
+                    id="collapseInventory"
+                    class="accordion-collapse collapse show"
+                    aria-labelledby="headingInventory"
+                    data-bs-parent="#dashboardAccordion"
+                  >
+                    <div class="accordion-body">
+                      <ul class="list-group list-group-flush" id="inventoryList"></ul>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="accordion-item">
+                  <h2 class="accordion-header" id="headingStats">
+                    <button
+                      class="accordion-button collapsed"
+                      type="button"
+                      data-bs-toggle="collapse"
+                      data-bs-target="#collapseStats"
+                      aria-expanded="false"
+                      aria-controls="collapseStats"
+                    >
+                      Squad Stats
+                    </button>
+                  </h2>
+                  <div
+                    id="collapseStats"
+                    class="accordion-collapse collapse"
+                    aria-labelledby="headingStats"
+                    data-bs-parent="#dashboardAccordion"
+                  >
+                    <div class="accordion-body">
+                      <div class="d-grid gap-3" id="statsPanel"></div>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="accordion-item">
+                  <h2 class="accordion-header" id="headingTips">
+                    <button
+                      class="accordion-button collapsed"
+                      type="button"
+                      data-bs-toggle="collapse"
+                      data-bs-target="#collapseTips"
+                      aria-expanded="false"
+                      aria-controls="collapseTips"
+                    >
+                      Quick Tips
+                    </button>
+                  </h2>
+                  <div
+                    id="collapseTips"
+                    class="accordion-collapse collapse"
+                    aria-labelledby="headingTips"
+                    data-bs-parent="#dashboardAccordion"
+                  >
+                    <div class="accordion-body">
+                      <ul class="small mb-0 ps-3">
+                        <li>Focus helps you decode clues and stay calm in noisy scenes.</li>
+                        <li>Crew Trust unlocks stronger team-up endings and safer routes.</li>
+                        <li>Charge keeps doors, feeds, and emergency gear online.</li>
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="card border-0 shadow-sm sidebar-panel mt-4">
+                <div class="card-body p-4">
+                  <p class="eyebrow mb-2">Live Hint</p>
+                  <h3 class="h6 mb-2">Guidance Feed</h3>
+                  <p class="text-secondary mb-0" id="hintMini">
+                    Hints unlock once the mission starts.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+      </div>
+    </main>
+
+    <div
+      class="offcanvas offcanvas-end text-bg-dark"
+      tabindex="-1"
+      id="logCanvas"
+      aria-labelledby="logCanvasLabel"
+    >
+      <div class="offcanvas-header border-bottom border-secondary-subtle">
+        <div>
+          <p class="eyebrow text-white-50 mb-1">Run History</p>
+          <h2 class="offcanvas-title h5 mb-0" id="logCanvasLabel">Mission Log</h2>
+        </div>
+        <button
+          type="button"
+          class="btn-close btn-close-white"
+          data-bs-dismiss="offcanvas"
+          aria-label="Close"
+        ></button>
+      </div>
+      <div class="offcanvas-body">
+        <ol class="ps-3 small mb-0" id="decisionLog"></ol>
+      </div>
+    </div>
+
+    <div class="toast-container position-fixed bottom-0 end-0 p-3">
+      <div
+        id="feedbackToast"
+        class="toast align-items-center border-0 text-bg-dark"
+        role="status"
+        aria-live="polite"
+        aria-atomic="true"
+      >
+        <div class="d-flex">
+          <div class="toast-body" id="feedbackToastBody">Mission update ready.</div>
+          <button
+            type="button"
+            class="btn-close btn-close-white me-2 m-auto"
+            data-bs-dismiss="toast"
+            aria-label="Close"
+          ></button>
+        </div>
+      </div>
+    </div>
+
+    <div
+      class="modal fade"
+      id="endingModal"
+      tabindex="-1"
+      aria-labelledby="endingModalTitle"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content ending-modal">
+          <div class="modal-header border-0">
+            <div>
+              <p class="eyebrow mb-1">Mission Result</p>
+              <h2 class="modal-title h3 mb-0" id="endingModalTitle">United Signal</h2>
+            </div>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body pt-0">
+            <p class="text-secondary" id="endingModalText"></p>
+            <div class="row g-3 mb-3" id="endingStatsSummary"></div>
+            <div class="ending-highlights rounded-4 p-3">
+              <p class="eyebrow mb-2">Highlights</p>
+              <ul class="mb-0 ps-3" id="endingHighlights"></ul>
+            </div>
+          </div>
+          <div class="modal-footer border-0">
+            <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">
+              Close
+            </button>
+            <button type="button" class="btn btn-dark" id="modalRestartButton">
+              Restart Mission
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="game.js"></script>
+  </body>
+</html>
